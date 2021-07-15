@@ -52,6 +52,14 @@ const FlipCardFind = async (req, res) => {
   });
 };
 
+const FlipCardDelete = async (req, res) => {
+  const registeredCard = await FlipCard.findOneAndDelete({ _id: req.query.id });
+
+  return res.status(STATUS_CODES.OK).json({
+    data: 'Success',
+  });
+};
+
 const PricingCardCheck = async (req, res) => {
   const registeredCard = await PricingCard.findOne({
     sheetid: req.body.sheetid,
@@ -101,6 +109,16 @@ const PricingCardFind = async (req, res) => {
 
   return res.status(STATUS_CODES.OK).json({
     data: registeredCard,
+  });
+};
+
+const PricingCardDelete = async (req, res) => {
+  const registeredCard = await PricingCard.findOneAndDelete({
+    _id: req.query.id,
+  });
+
+  return res.status(STATUS_CODES.OK).json({
+    data: 'Success',
   });
 };
 
@@ -159,6 +177,16 @@ const NormalCardFind = async (req, res) => {
   });
 };
 
+const NormalCardDelete = async (req, res) => {
+  const registeredCard = await NormalCard.findOneAndDelete({
+    _id: req.query.id,
+  });
+
+  return res.status(STATUS_CODES.OK).json({
+    data: 'Success',
+  });
+};
+
 const FlipCardAll = async (req, res) => {
   const registeredCard = await FlipCard.find();
   return res.status(STATUS_CODES.OK).json({
@@ -189,4 +217,7 @@ module.exports = {
   FlipCardAll,
   PricingCardAll,
   NormalCardAll,
+  FlipCardDelete,
+  PricingCardDelete,
+  NormalCardDelete,
 };
