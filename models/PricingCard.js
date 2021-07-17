@@ -17,7 +17,7 @@ const PricingCardSchema = mongo.Schema({
     type: String,
     required: true,
   },
-  planlink: {
+  planlinkkey: {
     type: String,
     required: true,
   },
@@ -38,6 +38,38 @@ const PricingCardSchema = mongo.Schema({
     required: true,
   },
   planfeature5key: {
+    type: String,
+    required: true,
+  },
+  plannamevalue: {
+    type: String,
+    required: true,
+  },
+  planpricevalue: {
+    type: String,
+    required: true,
+  },
+  planlinkvalue: {
+    type: String,
+    required: true,
+  },
+  planfeature1value: {
+    type: String,
+    required: true,
+  },
+  planfeature2value: {
+    type: String,
+    required: true,
+  },
+  planfeature3value: {
+    type: String,
+    required: true,
+  },
+  planfeature4value: {
+    type: String,
+    required: true,
+  },
+  planfeature5value: {
     type: String,
     required: true,
   },

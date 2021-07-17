@@ -13,6 +13,8 @@ const {
   FlipCardDelete,
   PricingCardDelete,
   NormalCardDelete,
+  FlipCardUpdate,
+  PricingCardUpdate,
 } = require('./cards');
 
 cardRoute.post('/flipcard', FlipCardCheck);
@@ -27,5 +29,7 @@ cardRoute.get('/normalcardall', NormalCardAll);
 cardRoute.delete('/flipdelete', FlipCardDelete);
 cardRoute.delete('/pricingdelete', PricingCardDelete);
 cardRoute.delete('/normaldelete', NormalCardDelete);
+cardRoute.patch('/flipcardupdate', FlipCardUpdate);
+cardRoute.patch('/pricingcardupdate', PricingCardUpdate);
 
 module.exports = cardRoute;

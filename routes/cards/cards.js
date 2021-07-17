@@ -17,6 +17,12 @@ const FlipCardCheck = async (req, res) => {
     descriptionkey: req.body.descriptionkey,
     photokey: req.body.photokey,
     gotokey: req.body.gotokey,
+    namevalue: req.body.namevalue,
+    titlevalue: req.body.titlevalue,
+    pricevalue: req.body.pricevalue,
+    descriptionvalue: req.body.descriptionvalue,
+    photovalue: req.body.photovalue,
+    gotovalue: req.body.gotovalue,
     titlesize: req.body.titlesize,
     titlecolor: req.body.titlecolor,
     namesize: req.body.namesize,
@@ -60,6 +66,54 @@ const FlipCardDelete = async (req, res) => {
   });
 };
 
+const FlipCardUpdate = async (req, res) => {
+  const registeredCard = await FlipCard.findOne({ _id: req.query.id });
+  if (!registeredCard)
+    return res.status(STATUS_CODES.BAD_REQUEST).json({
+      message: "Can't Update",
+    });
+  registeredCard.set({
+    sheetid: req.body.sheetid,
+    cardtype: req.body.cardtype,
+    namekey: req.body.namekey,
+    titlekey: req.body.titlekey,
+    pricekey: req.body.pricekey,
+    descriptionkey: req.body.descriptionkey,
+    photokey: req.body.photokey,
+    gotokey: req.body.gotokey,
+    namevalue: req.body.namevalue,
+    titlevalue: req.body.titlevalue,
+    pricevalue: req.body.pricevalue,
+    descriptionvalue: req.body.descriptionvalue,
+    photovalue: req.body.photovalue,
+    gotovalue: req.body.gotovalue,
+    titlesize: req.body.titlesize,
+    titlecolor: req.body.titlecolor,
+    namesize: req.body.namesize,
+    namecolor: req.body.namecolor,
+    cardcolor: req.body.cardcolor,
+    pricesize: req.body.pricesize,
+    pricecolor: req.body.pricecolor,
+    descriptionsize: req.body.descriptionsize,
+    descriptioncolor: req.body.descriptioncolor,
+    buttoncolor: req.body.buttoncolor,
+    buttontextcolor: req.body.buttontextcolor,
+    textfont: req.body.textfont,
+  });
+
+  try {
+    await registeredCard.save();
+    console.log('updated');
+    return res.status(STATUS_CODES.OK).json({
+      _id: registeredCard._id,
+    });
+  } catch (e) {
+    return res.status(STATUS_CODES.INTERNAL_SERVER_ERROR).json({
+      message: 'Server error',
+    });
+  }
+};
+
 const PricingCardCheck = async (req, res) => {
   const registeredCard = await PricingCard.findOne({
     sheetid: req.body.sheetid,
@@ -73,12 +127,20 @@ const PricingCardCheck = async (req, res) => {
     cardtype: req.body.cardtype,
     plannamekey: req.body.plannamekey,
     planpricekey: req.body.planpricekey,
-    planlink: req.body.planlink,
+    planlinkkey: req.body.planlinkkey,
     planfeature1key: req.body.planfeature1key,
     planfeature2key: req.body.planfeature2key,
     planfeature3key: req.body.planfeature3key,
     planfeature4key: req.body.planfeature4key,
     planfeature5key: req.body.planfeature5key,
+    plannamevalue: req.body.plannamevalue,
+    planpricevalue: req.body.planpricevalue,
+    planlinkvalue: req.body.planlinkvalue,
+    planfeature1value: req.body.planfeature1value,
+    planfeature2value: req.body.planfeature2value,
+    planfeature3value: req.body.planfeature3value,
+    planfeature4value: req.body.planfeature4value,
+    planfeature5value: req.body.planfeature5value,
     pricingcardcolor: req.body.pricingcardcolor,
     pricingplansize: req.body.pricingplansize,
     princingplancolor: req.body.princingplancolor,
@@ -96,6 +158,58 @@ const PricingCardCheck = async (req, res) => {
     console.log('registered');
     return res.status(STATUS_CODES.CREATED).json({
       _id: Card._id,
+    });
+  } catch (e) {
+    return res.status(STATUS_CODES.INTERNAL_SERVER_ERROR).json({
+      message: 'Server error',
+    });
+  }
+};
+
+const PricingCardUpdate = async (req, res) => {
+  const registeredCard = await PricingCard.findOne({
+    _id: req.query.id,
+  });
+  if (!registeredCard)
+    return res.status(STATUS_CODES.BAD_REQUEST).json({
+      message: 'Sheetid Already exists',
+    });
+  registeredCard.set({
+    sheetid: req.body.sheetid,
+    cardtype: req.body.cardtype,
+    plannamekey: req.body.plannamekey,
+    planpricekey: req.body.planpricekey,
+    planlinkkey: req.body.planlinkkey,
+    planfeature1key: req.body.planfeature1key,
+    planfeature2key: req.body.planfeature2key,
+    planfeature3key: req.body.planfeature3key,
+    planfeature4key: req.body.planfeature4key,
+    planfeature5key: req.body.planfeature5key,
+    plannamevalue: req.body.plannamevalue,
+    planpricevalue: req.body.planpricevalue,
+    planlinkvalue: req.body.planlinkvalue,
+    planfeature1value: req.body.planfeature1value,
+    planfeature2value: req.body.planfeature2value,
+    planfeature3value: req.body.planfeature3value,
+    planfeature4value: req.body.planfeature4value,
+    planfeature5value: req.body.planfeature5value,
+    pricingcardcolor: req.body.pricingcardcolor,
+    pricingplansize: req.body.pricingplansize,
+    princingplancolor: req.body.princingplancolor,
+    pricingpricesize: req.body.pricingpricesize,
+    pricingpricecolor: req.body.pricingpricecolor,
+    pricingbuttoncolor: req.body.pricingbuttoncolor,
+    pricingbuttontextcolor: req.body.pricingbuttontextcolor,
+    pricingfeaturecolor: req.body.pricingfeaturecolor,
+    princingfeaturesize: req.body.princingfeaturesize,
+    pricingfont: req.body.pricingfont,
+  });
+
+  try {
+    registeredCard.save();
+    console.log('updated');
+    return res.status(STATUS_CODES.OK).json({
+      _id: registeredCard._id,
     });
   } catch (e) {
     return res.status(STATUS_CODES.INTERNAL_SERVER_ERROR).json({
@@ -220,4 +334,6 @@ module.exports = {
   FlipCardDelete,
   PricingCardDelete,
   NormalCardDelete,
+  FlipCardUpdate,
+  PricingCardUpdate,
 };

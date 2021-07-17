@@ -33,6 +33,30 @@ const FlipCardSchema = mongo.Schema({
     type: String,
     required: true,
   },
+  namevalue: {
+    type: String,
+    required: true,
+  },
+  titlevalue: {
+    type: String,
+    required: true,
+  },
+  pricevalue: {
+    type: String,
+    required: true,
+  },
+  descriptionvalue: {
+    type: String,
+    required: true,
+  },
+  photovalue: {
+    type: String,
+    required: true,
+  },
+  gotovalue: {
+    type: String,
+    required: true,
+  },
   titlesize: {
     type: String,
     required: true,
