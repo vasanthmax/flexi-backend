@@ -255,6 +255,14 @@ const NormalCardCheck = async (req, res) => {
     logokey: req.body.logokey,
     servicekey: req.body.servicekey,
     positionkey: req.body.positionkey,
+    namevalue: req.body.namevalue,
+    photovalue: req.body.photovalue,
+    reviewvalue: req.body.reviewvalue,
+    titlevalue: req.body.titlevalue,
+    ratingsvalue: req.body.ratingsvalue,
+    logovalue: req.body.logovalue,
+    servicevalue: req.body.servicevalue,
+    positionvalue: req.body.positionvalue,
     cardcolor: req.body.cardcolor,
     avatarshape: req.body.avatarshape,
     namecolor: req.body.namecolor,
@@ -301,6 +309,61 @@ const NormalCardDelete = async (req, res) => {
   });
 };
 
+const NormalCardUpdate = async (req, res) => {
+  const registeredCard = await NormalCard.findOne({
+    _id: req.query.id,
+  });
+  if (!registeredCard)
+    return res.status(STATUS_CODES.BAD_REQUEST).json({
+      message: 'Sheetid Already exists',
+    });
+  registeredCard.set({
+    sheetid: req.body.sheetid,
+    cardtype: req.body.cardtype,
+    namekey: req.body.namekey,
+    photokey: req.body.photokey,
+    reviewkey: req.body.reviewkey,
+    titlekey: req.body.titlekey,
+    ratingskey: req.body.ratingskey,
+    logokey: req.body.logokey,
+    servicekey: req.body.servicekey,
+    positionkey: req.body.positionkey,
+    namevalue: req.body.namevalue,
+    photovalue: req.body.photovalue,
+    reviewvalue: req.body.reviewvalue,
+    titlevalue: req.body.titlevalue,
+    ratingsvalue: req.body.ratingsvalue,
+    logovalue: req.body.logovalue,
+    servicevalue: req.body.servicevalue,
+    positionvalue: req.body.positionvalue,
+    cardcolor: req.body.cardcolor,
+    avatarshape: req.body.avatarshape,
+    namecolor: req.body.namecolor,
+    namesize: req.body.namesize,
+    positioncolor: req.body.positioncolor,
+    positionsize: req.body.positionsize,
+    titlecolor: req.body.titlecolor,
+    titlesize: req.body.titlesize,
+    reviewcolor: req.body.reviewcolor,
+    reviewsize: req.body.reviewsize,
+    servicecolor: req.body.servicecolor,
+    servicesize: req.body.servicesize,
+    fontname: req.body.fontname,
+  });
+
+  try {
+    await registeredCard.save();
+    console.log('updated');
+    return res.status(STATUS_CODES.CREATED).json({
+      _id: registeredCard._id,
+    });
+  } catch (e) {
+    return res.status(STATUS_CODES.INTERNAL_SERVER_ERROR).json({
+      message: 'Server error',
+    });
+  }
+};
+
 const FlipCardAll = async (req, res) => {
   const registeredCard = await FlipCard.find();
   return res.status(STATUS_CODES.OK).json({
@@ -336,4 +399,5 @@ module.exports = {
   NormalCardDelete,
   FlipCardUpdate,
   PricingCardUpdate,
+  NormalCardUpdate,
 };
