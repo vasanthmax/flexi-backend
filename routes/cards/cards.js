@@ -35,6 +35,7 @@ const FlipCardCheck = async (req, res) => {
     buttoncolor: req.body.buttoncolor,
     buttontextcolor: req.body.buttontextcolor,
     textfont: req.body.textfont,
+    scrolltype: req.body.scrolltype,
   });
 
   try {
@@ -99,6 +100,7 @@ const FlipCardUpdate = async (req, res) => {
     buttoncolor: req.body.buttoncolor,
     buttontextcolor: req.body.buttontextcolor,
     textfont: req.body.textfont,
+    scrolltype: req.body.scrolltype,
   });
 
   try {
@@ -151,6 +153,7 @@ const PricingCardCheck = async (req, res) => {
     pricingfeaturecolor: req.body.pricingfeaturecolor,
     princingfeaturesize: req.body.princingfeaturesize,
     pricingfont: req.body.pricingfont,
+    scrolltype: req.body.scrolltype,
   });
 
   try {
@@ -203,6 +206,7 @@ const PricingCardUpdate = async (req, res) => {
     pricingfeaturecolor: req.body.pricingfeaturecolor,
     princingfeaturesize: req.body.princingfeaturesize,
     pricingfont: req.body.pricingfont,
+    scrolltype: req.body.scrolltype,
   });
 
   try {
@@ -276,6 +280,7 @@ const NormalCardCheck = async (req, res) => {
     servicecolor: req.body.servicecolor,
     servicesize: req.body.servicesize,
     fontname: req.body.fontname,
+    scrolltype: req.body.scrolltype,
   });
 
   try {
@@ -349,6 +354,7 @@ const NormalCardUpdate = async (req, res) => {
     servicecolor: req.body.servicecolor,
     servicesize: req.body.servicesize,
     fontname: req.body.fontname,
+    scrolltype: req.body.scrolltype,
   });
 
   try {

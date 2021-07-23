@@ -113,6 +113,10 @@ const PricingCardSchema = mongo.Schema({
     type: String,
     required: true,
   },
+  scrolltype: {
+    type: String,
+    required: true,
+  },
 });
 
 const PricingCard = mongo.model('Pricing', PricingCardSchema);

@@ -105,6 +105,10 @@ const FlipCardSchema = mongo.Schema({
     type: String,
     required: true,
   },
+  scrolltype: {
+    type: String,
+    required: true,
+  },
 });
 
 const FlipCard = mongo.model('FlipCard', FlipCardSchema);

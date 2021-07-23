@@ -125,6 +125,10 @@ const NormalCardSchema = mongo.Schema({
     type: String,
     required: true,
   },
+  scrolltype: {
+    type: String,
+    required: true,
+  },
 });
 
 const NormalCard = mongo.model('Normal', NormalCardSchema);
