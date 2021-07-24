@@ -360,7 +360,7 @@ const NormalCardUpdate = async (req, res) => {
   try {
     await registeredCard.save();
     console.log('updated');
-    return res.status(STATUS_CODES.CREATED).json({
+    return res.status(STATUS_CODES.OK).json({
       _id: registeredCard._id,
     });
   } catch (e) {
