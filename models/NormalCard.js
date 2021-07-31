@@ -11,67 +11,51 @@ const NormalCardSchema = mongo.Schema({
   },
   namekey: {
     type: String,
-    required: true,
   },
   photokey: {
     type: String,
-    required: true,
   },
   reviewkey: {
     type: String,
-    required: true,
   },
   titlekey: {
     type: String,
-    required: true,
   },
   ratingskey: {
     type: String,
-    required: true,
   },
   logokey: {
     type: String,
-    required: true,
   },
   servicekey: {
     type: String,
-    required: true,
   },
   positionkey: {
     type: String,
-    required: true,
   },
   namevalue: {
     type: String,
-    required: true,
   },
   photovalue: {
     type: String,
-    required: true,
   },
   reviewvalue: {
     type: String,
-    required: true,
   },
   titlevalue: {
     type: String,
-    required: true,
   },
   ratingsvalue: {
     type: String,
-    required: true,
   },
   logovalue: {
     type: String,
-    required: true,
   },
   servicevalue: {
     type: String,
-    required: true,
   },
   positionvalue: {
     type: String,
-    required: true,
   },
   cardcolor: {
     type: String,

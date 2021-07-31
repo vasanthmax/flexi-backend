@@ -11,51 +11,39 @@ const FlipCardSchema = mongo.Schema({
   },
   namekey: {
     type: String,
-    required: true,
   },
   titlekey: {
     type: String,
-    required: true,
   },
   pricekey: {
     type: String,
-    required: true,
   },
   descriptionkey: {
     type: String,
-    required: true,
   },
   photokey: {
     type: String,
-    required: true,
   },
   gotokey: {
     type: String,
-    required: true,
   },
   namevalue: {
     type: String,
-    required: true,
   },
   titlevalue: {
     type: String,
-    required: true,
   },
   pricevalue: {
     type: String,
-    required: true,
   },
   descriptionvalue: {
     type: String,
-    required: true,
   },
   photovalue: {
     type: String,
-    required: true,
   },
   gotovalue: {
     type: String,
-    required: true,
   },
   titlesize: {
     type: String,
