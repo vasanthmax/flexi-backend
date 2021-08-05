@@ -1,7 +1,7 @@
 // src/routes/authentication/validation.js
 
 const Joi = require('joi')
-const STATUS_CODES = require('../status_codes')
+const STATUS_CODES = require('../../constants/statusCodes')
 
 
 const validationOptions = {

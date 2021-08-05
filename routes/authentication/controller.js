@@ -1,14 +1,11 @@
-// src/routes/authentication/controller.js
-// Helps abstract boilerplate code and extra variables
-
 const https = require('https')
 const { OAuth2Client } = require('google-auth-library')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 
 const User = require('../../models/user')
-const AUTH = require('../../../config').AUTHENTICATION
-const { AUTHORIZATION_SECRET_KEY } = require('../../../config')
+const AUTH = require('../../config').AUTHENTICATION
+const { AUTHORIZATION_SECRET_KEY } = require('../../config')
 
 
 class TokenError extends Error {
@@ -20,7 +17,6 @@ class TokenError extends Error {
 
 
 function generateToken(_id, tokenType = 'A') {
-	// Always creates an access token except when tokenType is 'R'
 	TOKEN_TYPE = tokenType == 'R' ? 'REFRESH_TOKEN' : 'ACCESS_TOKEN';
 
 	ACCESS_TOKEN_EXPIRY = '1h'
@@ -30,12 +26,12 @@ function generateToken(_id, tokenType = 'A') {
 		type: TOKEN_TYPE,
 	}
 
-	// For refresh token. It never expires.
+
 	if (tokenType == 'R') {
 		signedJWT = jwt.sign(payload, AUTHORIZATION_SECRET_KEY);
 		return signedJWT
 	}
-	// For access token. It expires in 1h
+
 	else {
 		signedJWT = jwt.sign(payload, AUTHORIZATION_SECRET_KEY, { expiresIn: ACCESS_TOKEN_EXPIRY });
 	}
@@ -52,7 +48,7 @@ function generateRefreshToken(object_id) {
 }
 
 
-// Fetches a response from given URL as JSON
+
 async function fetch(url) {
 	return new Promise((resolve, reject) => {
 		https.get(url, (res) => {
@@ -72,7 +68,7 @@ async function fetch(url) {
 async function findProfileOrCreate(profile) {
 	try {
 		user = await User.findOne({ email: profile.email })
-		// First time user
+
 		if (!user) {
 			const newUser = new User(profile)
 			let user = await newUser.save()
@@ -92,10 +88,10 @@ async function findProfileOrCreate(profile) {
 				}
 			}
 		}
-		// Existing user
+
 		else {
-			// Existing users can use this method only for social sign in
-			// With email signup, they can only login.
+
+
 			if (profile.type == 'email') {
 				throw new Error('SignupError: Email already in use.')
 			}
@@ -121,13 +117,7 @@ async function findProfileOrCreate(profile) {
 
 
 async function verifyFacebookAccessToken(token) {
-	/*
-	profileURL uses access_token, while verifyURL uses input_token
-	to refer to the same token that came from frontend.
 
-	access_token in verifyURL is formed as APP_ID|APP_SECRET
-	retrieved from App's dashboard on FB Dev Console.
-	*/
 	const profileURL = `https://graph.facebook.com/v9.0/me?fields=name,email&access_token=${token}`
 	const verifyURL = `https://graph.facebook.com/debug_token?input_token=${token}&access_token=${AUTH.FACEBOOK.APP_ID}|${AUTH.FACEBOOK.APP_SECRET}`
 
@@ -148,7 +138,7 @@ async function verifyGoogleIdToken(token) {
 	try {
 		const ticket = await client.verifyIdToken({
 			idToken: token,
-			audience: AUTH.GOOGLE.CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
+			audience: AUTH.GOOGLE.CLIENT_ID,
 		});
 		const payload = ticket.getPayload()
 

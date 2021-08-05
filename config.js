@@ -3,8 +3,6 @@
 
 module.exports = {
 	SERVER_PORT: process.env.PORT || 3000,
-	ENABLE_NOTE_AUTOPOPULATE: true,		// Enables auto-populate in Notes' children references
-
 	AUTHORIZATION_SECRET_KEY: 'CHANGING_TO_CHECK_CI',	// Make it stronger in production
 	AUTHENTICATION: {
 		GOOGLE: {

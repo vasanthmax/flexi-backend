@@ -1,16 +1,14 @@
-// src/routes/authentication/authentication.js
-
 const User = require('../../models/user')
 const { generateAccessToken, verifyGoogleIdToken,
 	verifyFacebookAccessToken, findProfileOrCreate,
 	generateProfile, loginHandler } = require('./controller')
 
-const STATUS_CODES = require('../status_codes')
+const STATUS_CODES = require('../../constants/statusCodes')
 const JWT = require('jsonwebtoken')
-const { AUTHORIZATION_SECRET_KEY } = require('../../../config')
+const { AUTHORIZATION_SECRET_KEY } = require('../../config')
 
 
-// TODO
+
 async function emailSignup(req, res) {
 	var { email, name, password } = req.body
 
@@ -30,7 +28,7 @@ async function emailSignup(req, res) {
 }
 
 
-// TODO
+
 async function emailLogin(req, res) {
 	var { email, password } = req.body
 
@@ -53,7 +51,7 @@ async function emailLogin(req, res) {
 }
 
 
-// DONE
+
 async function googleSignIn(req, res) {
 	var googleIdToken = req.body.idToken
 
@@ -77,7 +75,7 @@ async function googleSignIn(req, res) {
 }
 
 
-// TODO
+
 async function facebookSignin(req, res) {
 	var { accessToken } = req.body
 
