@@ -1,17 +1,28 @@
-// src/routes/authentication/index.js 
+// src/routes/authentication/index.js
 
-const express = require('express')
-const router = express.Router()
-const { googleSignIn, facebookSignin, refresh,
-        emailLogin, emailSignup } = require('./authentication')
-const { validateEmailLogin, validateEmailSignup,
-        validateFacebookSignin, validateGoogleSignin } = require('./validation')
+const express = require('express');
+const router = express.Router();
+const {
+  googleSignIn,
+  facebookSignin,
+  refresh,
+  emailLogin,
+  emailSignup,
+  forgotPassword,
+  resetPassword,
+} = require('./authentication');
+const {
+  validateEmailLogin,
+  validateEmailSignup,
+  validateFacebookSignin,
+  validateGoogleSignin,
+} = require('./validation');
 
-router.get('/refresh', refresh)
-router.post('/google', validateGoogleSignin, googleSignIn)
-router.post('/facebook', validateFacebookSignin, facebookSignin)
-router.post('/email/signup', validateEmailSignup, emailSignup)
-router.post('/email/login', validateEmailLogin, emailLogin)
-
-
-module.exports = router
+router.get('/refresh', refresh);
+router.post('/google', validateGoogleSignin, googleSignIn);
+router.post('/facebook', validateFacebookSignin, facebookSignin);
+router.post('/email/signup', validateEmailSignup, emailSignup);
+router.post('/email/login', validateEmailLogin, emailLogin);
+router.put('/forgotpassword', forgotPassword);
+router.put('/resetpassword', resetPassword);
+module.exports = router;

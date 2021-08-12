@@ -18,6 +18,8 @@
     "google-auth-library": "^6.1.3",
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mailgun-js": "^0.22.0",
     "mongoose": "^5.13.1"
   },
   "devDependencies": {
