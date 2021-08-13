@@ -151,7 +151,7 @@ function forgotPassword(req, res) {
       to: email,
       subject: 'Password reset Link',
       html: `<h2>Please click on given Link to reset your Password</h2>
-				<a href="http://localhost:3000/auth/changepass?token=${token}"><p>http://localhost:3000/auth/changepass?token=${token}</p><a>
+				<a href="http://localhost:3000/auth/changepass?token=${token}">http://localhost:3000/auth/changepass?token=${token}</a>
 		`,
     };
 
