@@ -93,7 +93,7 @@ function validateFacebookSignin(req, res, next) {
 function validateResetPassword(req, res, next) {
   const emailLoginFilter = Joi.object({
     newPass: Joi.string().min(6).required(),
-    resetink: Joi.string().required(),
+    resetLink: Joi.string(),
   });
 
   const { error, value } = emailLoginFilter.validate(
