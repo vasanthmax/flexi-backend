@@ -16,6 +16,7 @@ const {
   validateEmailSignup,
   validateFacebookSignin,
   validateGoogleSignin,
+  validateResetPassword,
 } = require('./validation');
 
 router.get('/refresh', refresh);
@@ -24,5 +25,5 @@ router.post('/facebook', validateFacebookSignin, facebookSignin);
 router.post('/email/signup', validateEmailSignup, emailSignup);
 router.post('/email/login', validateEmailLogin, emailLogin);
 router.put('/forgotpassword', forgotPassword);
-router.put('/resetpassword', resetPassword);
+router.put('/resetpassword', validateResetPassword, resetPassword);
 module.exports = router;
