@@ -26,10 +26,7 @@ async function emailSignup(req, res) {
     res.status(STATUS_CODES.CREATED).json(response);
   } catch (err) {
     res.status(STATUS_CODES.BAD_REQUEST).json({
-      error: {
-        name: err.name,
-        message: err.message,
-      },
+      error: err.message,
     });
   }
 }
@@ -45,11 +42,7 @@ async function emailLogin(req, res) {
     });
   } catch (err) {
     res.status(STATUS_CODES.UNAUTHORIZED).json({
-      status: 'error',
-      error: {
-        name: 'WrongCredentialsError',
-        message: err.message,
-      },
+      error: 'WrongCredentialsError',
     });
   }
 }
