@@ -9,6 +9,7 @@ const FlipCardCheck = async (req, res) => {
       message: 'Sheetid Already exists',
     });
   let Card = new FlipCard({
+    userid: req.body.userid,
     sheetid: req.body.sheetid,
     cardtype: req.body.cardtype,
     namekey: req.body.namekey,
@@ -125,6 +126,7 @@ const PricingCardCheck = async (req, res) => {
       message: 'Sheetid Already exists',
     });
   let Card = new PricingCard({
+    userid: req.body.userid,
     sheetid: req.body.sheetid,
     cardtype: req.body.cardtype,
     plannamekey: req.body.plannamekey,
@@ -249,6 +251,7 @@ const NormalCardCheck = async (req, res) => {
       message: 'Sheetid Already exists',
     });
   let Card = new NormalCard({
+    userid: req.body.userid,
     sheetid: req.body.sheetid,
     cardtype: req.body.cardtype,
     namekey: req.body.namekey,
@@ -371,20 +374,20 @@ const NormalCardUpdate = async (req, res) => {
 };
 
 const FlipCardAll = async (req, res) => {
-  const registeredCard = await FlipCard.find();
+  const registeredCard = await FlipCard.find({userid:req.query.userid});
   return res.status(STATUS_CODES.OK).json({
     data: registeredCard,
   });
 };
 
 const PricingCardAll = async (req, res) => {
-  const registeredCard = await PricingCard.find();
+  const registeredCard = await PricingCard.find({userid:req.query.userid});
   return res.status(STATUS_CODES.OK).json({
     data: registeredCard,
   });
 };
 const NormalCardAll = async (req, res) => {
-  const registeredCard = await NormalCard.find();
+  const registeredCard = await NormalCard.find({userid:req.query.userid});
   return res.status(STATUS_CODES.OK).json({
     data: registeredCard,
   });
