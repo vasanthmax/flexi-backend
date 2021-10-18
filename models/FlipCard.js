@@ -1,6 +1,10 @@
 const mongo = require('mongoose');
 
 const FlipCardSchema = mongo.Schema({
+  userid: {
+    type: String,
+    required: true,
+  },
   sheetid: {
     type: String,
     required: true,
